@@ -1,0 +1,39 @@
+[project]
+name = "pw-test-project"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Igor Stepanenko <igstwork@gmail.com>"}
+]
+license = {text = "for internal use"}
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pytest (>=8.3.4,<9.0.0)",
+    "playwright (>=1.49.1,<2.0.0)",
+    "pytest-playwright (>=0.6.2,<0.7.0)",
+    "pytest-html (>=4.1.1,<5.0.0)",
+    "dynaconf (>=3.2.11,<4.0.0)",
+    "ruff (>=0.11.11,<0.12.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "--headed"
+testpaths = [
+    "tests",
+]
+markers = [
+    "smoke: marker for smoke tests",
+    "single: marker for tests cannot be executed in parallel",
+    "mobile: marker for mobile tests only",
+    "quality_gate: marker for tests that should be executed on quality gate",
+]
+log_cli = true
+log_cli_level = "INFO"
