@@ -1,0 +1,12 @@
+# IDE
+.idea
+__pycache__
+.vscode
+
+# Project
+.env
+build
+temp
+.venv
+# Ignore dynaconf secret files
+.secrets.*
