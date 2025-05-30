@@ -14,7 +14,8 @@ dependencies = [
     "pytest-playwright (>=0.6.2,<0.7.0)",
     "pytest-html (>=4.1.1,<5.0.0)",
     "dynaconf (>=3.2.11,<4.0.0)",
-    "ruff (>=0.11.11,<0.12.0)"
+    "ruff (>=0.11.11,<0.12.0)",
+    "faker (>=37.3.0,<38.0.0)"
 ]
 
 
@@ -25,9 +26,12 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 minversion = "8.0"
-addopts = "--headed"
+addopts = "--headed --screenshot=only-on-failure --full-page-screenshot"
 testpaths = [
     "tests",
+]
+pythonpath = [
+  "."
 ]
 markers = [
     "smoke: marker for smoke tests",
@@ -37,3 +41,6 @@ markers = [
 ]
 log_cli = true
 log_cli_level = "INFO"
+
+[tool.poetry]
+package-mode = false

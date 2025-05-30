@@ -1,3 +1,4 @@
+from faker import Faker
 from config import settings
 import pytest
 from playwright.sync_api import Page
@@ -9,3 +10,8 @@ from page_objects.page_creator import PageCreator
 def ui(page: Page):
     url = settings.qa.base_url
     yield PageCreator(page, url)
+
+
+@pytest.fixture()
+def faker():
+    return Faker()

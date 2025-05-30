@@ -10,3 +10,4 @@ temp
 .venv
 # Ignore dynaconf secret files
 .secrets.*
+/tests/test-results/
