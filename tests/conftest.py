@@ -9,6 +9,7 @@ from playwright.sync_api import (
     BrowserType,
     Page,
     Playwright,
+    APIRequestContext,
 )
 
 from page_objects.page_creator import PageCreator
@@ -54,3 +55,18 @@ def ui(context: BrowserContext) -> Generator[Page, None, None]:
 @pytest.fixture()
 def faker():
     return Faker()
+
+
+@pytest.fixture(scope="session")
+def api(playwright: Playwright) -> Generator[APIRequestContext, None, None]:
+    headers = {
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/137.0.0.0 Safari/537.36"
+        # "Authorization": f"token {API_TOKEN}",
+    }
+    request_context = playwright.request.new_context(
+        base_url=f"{settings.qa.base_url}/api", extra_http_headers=headers
+    )
+    yield request_context
+    request_context.dispose()
