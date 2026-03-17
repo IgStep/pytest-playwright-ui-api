@@ -37,8 +37,6 @@ pytest -m "not single"
 # Parallel execution (skip tests marked `single`)
 pytest -n auto -m "not single"
 
-# Headless (override default --headed)
-pytest --headed=false tests
 ```
 
 ### Linting
