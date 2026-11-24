@@ -37,6 +37,11 @@ pythonpath = [
 ]
 markers = [
     "smoke: marker for smoke tests",
+    "regression: full regression suite",
+    "api: API tests (no browser required)",
+    "ui: browser-based UI tests",
+    "contract: strict response schema (contract) tests",
+    "negative: negative / error-handling tests",
     "single: marker for tests cannot be executed in parallel",
     "mobile: marker for mobile tests only",
     "quality_gate: marker for tests that should be executed on quality gate",

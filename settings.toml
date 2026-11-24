@@ -2,6 +2,7 @@
 
 [qa]
 base_url = "https://automationexercise.com"
+api_sla_ms = 3000
 
 [uat]
 
