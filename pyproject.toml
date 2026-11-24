@@ -28,7 +28,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 minversion = "8.0"
-addopts = "--headed --screenshot=only-on-failure --full-page-screenshot"
+addopts = "--screenshot=only-on-failure --full-page-screenshot"
 testpaths = [
     "tests",
 ]
