@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Locator, Page
 
 
 class MainPage:
@@ -13,6 +13,9 @@ class MainPage:
         self.signup_login_menu_item = self.page.get_by_role(
             "link", name="Signup / Login"
         )
+
+    def logged_in_as(self, name: str) -> Locator:
+        return self.page.get_by_text(f"Logged in as {name}")
 
     def open(self):
         self.page.goto(f"{self.url}/", wait_until="domcontentloaded")
