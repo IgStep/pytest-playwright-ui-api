@@ -1,15 +1,26 @@
+import logging
+import os
+import random
 from collections.abc import Generator
 
 import pytest
-from faker import Faker
 from playwright.sync_api import APIRequestContext, Playwright
 
 from config import settings
 
+logger = logging.getLogger(__name__)
 
-@pytest.fixture()
-def faker():
-    return Faker()
+
+@pytest.fixture
+def faker_seed(request: pytest.FixtureRequest) -> int:
+    """Random seed per test, logged so a failure can be replayed via FAKER_SEED.
+
+    Overrides the faker plugin's default fixed seed (0), which would give every
+    test identical data.
+    """
+    seed = int(os.environ.get("FAKER_SEED", random.randrange(1_000_000)))
+    logger.info("Faker seed for %s: %s", request.node.nodeid, seed)
+    return seed
 
 
 @pytest.fixture(scope="session")
